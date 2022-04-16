@@ -1,0 +1,2 @@
+Secure Shell Protocol:
+  Communication between one computer from the "power shell" (or terminal, as linux users know it) to another.
