@@ -22,6 +22,7 @@ export default function App() {
 
   console.log("search for", currentSearchField)
   console.log("renderizou App de novo")
+  
   return (
     <div className='tc'>
       <h1 className='f1'>RoboFriends</h1>

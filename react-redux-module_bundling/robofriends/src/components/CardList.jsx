@@ -15,7 +15,7 @@ export default function CardList({ robots, searchFields }) {
   return (
     <>
       {currentRobots.map(robot => {
-        return <Card key={robot.id} id={robot.id} email={robot.email} username={robot.username} />
+        return <Card key={robot.id} id={robot.id} email={robot.email} username={robot.username} website={robot.website}/>
       })}
     </>
   )

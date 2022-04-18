@@ -4,6 +4,7 @@ export default function Card(props) {
       <img src={props.id !== undefined ? `https://robohash.org/${props.id}?200x200` : ''} alt="robot pic" />
       <div>
         <h2>{props.username}</h2>
+        <h4>{props.website}</h4>
         <p>{props.email}</p>
       </div>
     </div>
