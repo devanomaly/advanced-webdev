@@ -26,7 +26,7 @@ export default function App() {
     <div className='tc'>
       <h1 className='f1'>RoboFriends</h1>
       <SearchBox setSearch={setSearchField} />
-      {loaded && <CardList robots={currentUserList} searchFields={currentSearchField} />}
+      {loaded ? <CardList robots={currentUserList} searchFields={currentSearchField} /> : <h1>Loading...</h1>}
     </div>
   )
 }
