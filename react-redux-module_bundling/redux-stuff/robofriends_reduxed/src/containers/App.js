@@ -17,7 +17,7 @@ function App(props) {
   const { searchField, onSearchChange } = props
 
   useEffect(() => {
-    console.log("useEffect disparou");
+    // console.log("useEffect disparou");
     // console.log("store state\n", store.getState())
     if (!loaded) {
       (async () => {
@@ -29,8 +29,7 @@ function App(props) {
     }
   }, [loaded]) //execute only when didMount
 
-  console.log("search for", searchField)
-  console.log("renderizou App de novo")
+  // console.log("renderizou App de novo")
 
   return (
     <div className='tc'>
