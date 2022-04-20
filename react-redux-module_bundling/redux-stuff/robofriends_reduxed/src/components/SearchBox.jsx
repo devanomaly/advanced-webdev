@@ -1,4 +1,4 @@
-export default function SearchBox({ setSearch }) {
+export default function SearchBox({ onSearchChange }) {
   return (
     <div className="pa2">
       <input
@@ -6,7 +6,7 @@ export default function SearchBox({ setSearch }) {
         type="search"
         placeholder="search robots"
         onChange={(e) => {
-          setSearch(e.target.value)
+          onSearchChange(e)
         }}
       />
     </div>
