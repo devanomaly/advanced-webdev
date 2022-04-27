@@ -1,6 +1,6 @@
 import { requestRobots, setSearchField } from '../actions';
 import { connect } from 'react-redux';
-import CardList from '../components/CardList';
+// import CardList from '../components/CardList';
 import CardList_2 from '../components/CardList_2';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
@@ -35,7 +35,6 @@ function App(props) {
   },
     []
   ) //execute only when didMount
-
 
   return (
     <div className='tc'>

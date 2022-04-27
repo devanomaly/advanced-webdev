@@ -1,3 +1,4 @@
+// This version of CardList only renders the robot list passed in the props
 import Card from './Card'
 
 export default function CardList_2({ currentRobots }) {

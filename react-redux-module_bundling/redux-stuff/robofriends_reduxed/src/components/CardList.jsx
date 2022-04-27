@@ -1,3 +1,5 @@
+// This version triggers yet another re-render when filtering the robots due to searchField changes
+
 import Card from './Card'
 import { useEffect, useState } from 'react'
 import { searchStringInObjectValues } from '../services/string-in-object-vals'
