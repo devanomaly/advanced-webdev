@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { searchStringInObjectValues } from '../services/string-in-object-vals'
 
 export default function CardList({ robots, searchFields }) {
-  // TODO:>> aparentemente este cara precisa receber o estado robots (que vem das props...)
   // REMINDER! Keeping the filter logic here in useEffect was a better strategy: 2 App re-renders vs 4 App re-renders if currentRobots state was managed by App!
   const [currentRobots, setRobots] = useState(robots)
 
