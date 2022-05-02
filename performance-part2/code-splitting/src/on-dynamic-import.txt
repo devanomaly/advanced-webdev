@@ -1,0 +1,2 @@
+In order for the code-splitting in App.js to work, I had to create a single state object: when I used two state variables (for the case being, they were "route" and "Acomponent") the very action of setting states inside the onRouteChange function caused a loss of _ref in the components that were supposed to be dynamically loaded! 
+I'm not sure if I've gotten to the heart of the problem, but the side-effects of changing state are very likely to be what caused me the trouble.
