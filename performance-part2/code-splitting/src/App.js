@@ -1,38 +1,51 @@
 import './App.css';
-import { useState } from 'react';
 
 import Page1 from './components/Page1';
+import asyncComponent from './components/AsyncComponent';
+import { Component } from 'react';
 
-const onRouteChange = (setState) => (route) => {
-  // with code splitting
-  if (route === "page1") setState({route, component:Page1})
-  else if (route === "page2") {
-    import('./components/Page2').then(Page2 => {
-      console.log(Page2)
-      setState({ route, component: Page2.default })
-    }).catch(err => console.log("Deu ruim", err))
+// A functional version can be done with Suspense and React.lazy()
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      route: "page1", component: null
+    }
   }
-  else {
-    import('./components/Page3').then(Page3 => {
-      console.log(Page3)
-      setState({route, component: Page3.default})
-    }).catch(err => console.log("Deu ruim", err))
+
+  onRouteChange = (route) => {
+    // No Code Splitting:
+    // this.setState({route})
+    // With Code Splitting
+    if (route === "page1") {
+      this.setState({ route })
+    } else if (route === "page2") {
+      import('./components/Page2').then((Page2) => {
+        console.log(Page2);
+        this.setState({ route, component: Page2.default })
+      })
+    } else if (route === "page3") {
+      import('./components/Page3').then((Page3) => {
+        console.log(Page3);
+        this.setState({ route, component: Page3.default })
+      })
+    }
+  }
+  render() {
+    // if (this.state.route==="page1") return <Page1 onRouteChange={this.onRouteChange} />
+    // else if (this.state.route==="page2") return <Page2 onRouteChange={this.onRouteChange} />
+    // else if (this.state.route==="page3") return <Page3 onRouteChange={this.onRouteChange} />
+    if (this.state.route === "page1") return <Page1 onRouteChange={this.onRouteChange} />
+    else if (this.state.route === "page2") {
+      const AsyncPage2 = asyncComponent(() => import('./components/Page2'))
+      return <AsyncPage2 onRouteChange={this.onRouteChange} />
+    }
+    else if (this.state.route === "page3") {
+      const AsyncPage3 = asyncComponent(() => import('./components/Page3'))
+      return <AsyncPage3 onRouteChange={this.onRouteChange} />
+    }
   }
 }
 
-function App() {
-  // const [route, setRoute] = useState('page1')
-
-  // without code splitting
-  // if (route === 'page1') return <Page1 onRouteChange={setRoute} />;
-  // else if (route === 'page2') return <Page2 onRouteChange={setRoute} />;
-  // return <Page3 onRouteChange={setRoute} />
-
-  // with code splitting
-  const [myState, setState] = useState({ route: "page1", component: Page1 })
-  // TODO:>>> SEE ATTACHED "on-dynamic-import.txt"
-  if (myState.route === "page1") return <Page1 onRouteChange={onRouteChange(setState)} />;
-  else return <myState.component onRouteChange={onRouteChange(setState)} />
-}
-
-export default App;
+export default App
