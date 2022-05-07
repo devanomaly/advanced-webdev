@@ -11,6 +11,7 @@ import {
   // useState
 } from 'react';
 import './App.css'
+import Header from '../components/Header';
 
 const mapStateToProps = state => ({
   searchField: state.searchRobots.searchField,
@@ -38,7 +39,7 @@ function App(props) {
 
   return (
     <div className='tc'>
-      <h1 className='f1'>RoboFriends</h1>
+      <Header />
       <SearchBox onSearchChange={onSearchChange} />
       {isPending ? <h1>Loading...</h1> : <Scroll><CardList_2 currentRobots={filteredRobots} /></Scroll>}
     </div>
